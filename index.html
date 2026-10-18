@@ -1605,10 +1605,15 @@
 
   <script>
     // =========================================================================
-    // 🎯 DISTRIBUTION CAPTURE NODE (Paste your Gumroad URLs below)
+    // 🎯 DISTRIBUTION CAPTURE NODE (Dodo Payments + Google Drive Delivery)
     // =========================================================================
-    const GUMROAD_INDIA_URL = "https://gumroad.com/l/trustskill";   // ₹10 INR Product
-    const GUMROAD_GLOBAL_URL = "https://gumroad.com/l/trustskill";  // $1.00 USD Product
+    const DODO_PRODUCT_ID = "pdt_0Nq04kkEtp4sErOoGvPfr";
+    const GOOGLE_DRIVE_URL = "https://drive.google.com/drive/folders/1N9jjBjv17dADSmuTPiwxN96pbnaatLZt?usp=drive_link";
+    const REDIRECT_PARAM = encodeURIComponent(GOOGLE_DRIVE_URL);
+
+    // Dodo Payments Checkout (automatically redirects customer to Google Drive upon payment)
+    const DODO_CHECKOUT_URL = `https://test.checkout.dodopayments.com/buy/${DODO_PRODUCT_ID}?redirect_url=${REDIRECT_PARAM}`;
+    const INDIA_CHECKOUT_URL = DODO_CHECKOUT_URL; // Can also be your Razorpay link
 
     const PRICING_CONFIG = {
       IN: {
@@ -1627,7 +1632,7 @@
         finalBtn: 'Acquire Full Volume & Workbooks · ₹10 (Save ₹5,989)',
         dockSub: '🪔 Dasara Flash: ₹10 <span style="text-decoration: line-through; opacity: 0.7;">₹5,999</span>',
         dockBtn: 'Buy ₹10',
-        checkoutUrl: GUMROAD_INDIA_URL
+        checkoutUrl: INDIA_CHECKOUT_URL
       },
       GLOBAL: {
         currency: "$",
@@ -1645,7 +1650,7 @@
         finalBtn: 'Acquire Full Volume & Workbooks · $1.00 (Save $74)',
         dockSub: '🪔 Dasara Flash: $1.00 <span style="text-decoration: line-through; opacity: 0.7;">$75</span>',
         dockBtn: 'Buy $1.00',
-        checkoutUrl: GUMROAD_GLOBAL_URL
+        checkoutUrl: DODO_CHECKOUT_URL
       }
     };
 
@@ -1704,7 +1709,8 @@
       buyButtons.forEach(btn => {
         if (btn) {
           btn.href = data.checkoutUrl;
-          btn.setAttribute("data-gumroad-single-product", "true");
+          btn.target = "_blank";
+          btn.rel = "noopener noreferrer";
         }
       });
 
