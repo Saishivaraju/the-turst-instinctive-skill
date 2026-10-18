@@ -274,7 +274,7 @@ async function sendBookPackage(toEmail, customerName, paymentId) {
         </div>
 
         <div style="text-align: center; margin: 25px 0;">
-          <a href="https://drive.google.com/drive/folders/1N9jjBjv17dADSmuTPiwxN96pbnaatLZt?usp=drive_link" target="_blank" style="display: inline-block; background: #a87432; color: #ffffff; text-decoration: none; font-weight: bold; padding: 12px 24px; border-radius: 6px; font-size: 14px;">
+          <a href="https://drive.google.com/drive/folders/1N9jjBjv17dADSmuTPiwxN96pbnaatLZt?usp=sharing" target="_blank" style="display: inline-block; background: #a87432; color: #ffffff; text-decoration: none; font-weight: bold; padding: 12px 24px; border-radius: 6px; font-size: 14px;">
             📁 Open All Files in Google Drive
           </a>
         </div>
