@@ -1607,12 +1607,12 @@
     // =========================================================================
     // 🎯 DISTRIBUTION CAPTURE NODE (Dodo Payments + Google Drive Delivery)
     // =========================================================================
-    const DODO_PRODUCT_ID = "pdt_0Nq04kkEtp4sErOoGvPfr";
+    const DODO_PRODUCT_ID = "pdt_0Nq0EOuayQdoQ7NNH2urc"; // Live Production Product ID
     const GOOGLE_DRIVE_URL = "https://drive.google.com/drive/folders/1N9jjBjv17dADSmuTPiwxN96pbnaatLZt?usp=drive_link";
     const REDIRECT_PARAM = encodeURIComponent(GOOGLE_DRIVE_URL);
 
-    // Dodo Payments Checkout (automatically redirects customer to Google Drive upon payment)
-    const DODO_CHECKOUT_URL = `https://test.checkout.dodopayments.com/buy/${DODO_PRODUCT_ID}?redirect_url=${REDIRECT_PARAM}`;
+    // Live Dodo Payments Checkout (automatically redirects customer to Google Drive upon payment)
+    const DODO_CHECKOUT_URL = `https://checkout.dodopayments.com/buy/${DODO_PRODUCT_ID}?redirect_url=${REDIRECT_PARAM}`;
     const INDIA_CHECKOUT_URL = "https://pages.razorpay.com/pl_TpLe1VLLu7liQK/view"; // Direct Razorpay Payment Page for ₹10
 
     const PRICING_CONFIG = {
