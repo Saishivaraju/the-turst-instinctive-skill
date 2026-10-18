@@ -273,6 +273,12 @@ async function sendBookPackage(toEmail, customerName, paymentId) {
           </ul>
         </div>
 
+        <div style="text-align: center; margin: 25px 0;">
+          <a href="https://drive.google.com/drive/folders/1N9jjBjv17dADSmuTPiwxN96pbnaatLZt?usp=drive_link" target="_blank" style="display: inline-block; background: #a87432; color: #ffffff; text-decoration: none; font-weight: bold; padding: 12px 24px; border-radius: 6px; font-size: 14px;">
+            📁 Open All Files in Google Drive
+          </a>
+        </div>
+
         <h3 style="font-size: 15px; color: #16202c; margin-top: 25px;">🚀 Recommended Next Step:</h3>
         <p style="font-size: 14px; color: #444;">
           Start with <strong>Day 1 Workbook</strong> today. Execute the <em>3-Second Threshold Pause</em> every time you enter a room or meeting. Notice how immediately your presence shifts.

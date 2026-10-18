@@ -3,26 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thank You for Your Order | The Instinctive Trust Skill</title>
+  <title>Payment Successful | The Instinctive Trust Skill</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg-base: #F8F6F1;
-      --bg-card: #FFFFFF;
-      --ink-primary: #171A21;
-      --ink-secondary: #4A5162;
-      --accent: #B38038;
-      --border: #E3DCCF;
-      --success: #2E7D32;
+      --bg-base: #0B0F19;
+      --bg-card: #131A2B;
+      --ink-primary: #F1F5F9;
+      --ink-secondary: #94A3B8;
+      --accent-gold: #F59E0B;
+      --accent-gold-light: #FDE68A;
+      --border: rgba(245, 158, 11, 0.25);
+      --success: #10B981;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background: var(--bg-base);
+      background: radial-gradient(circle at top, #1A243D 0%, #0B0F19 100%);
       color: var(--ink-primary);
       font-family: 'Plus Jakarta Sans', sans-serif;
       line-height: 1.6;
@@ -37,96 +38,157 @@
     .thank-you-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      max-width: 620px;
+      border-radius: 20px;
+      max-width: 640px;
       width: 100%;
-      padding: 48px 40px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      padding: 44px 36px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(245, 158, 11, 0.08);
       text-align: center;
+      position: relative;
     }
 
     .success-badge {
-      width: 68px;
-      height: 68px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
-      background: #E8F5E9;
+      background: rgba(16, 185, 129, 0.15);
       color: var(--success);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 32px;
-      margin: 0 auto 24px;
-      border: 2px solid #A5D6A7;
+      font-size: 34px;
+      margin: 0 auto 20px;
+      border: 2px solid rgba(16, 185, 129, 0.4);
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+    }
+
+    .special-badge {
+      display: inline-block;
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--accent-gold-light);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      padding: 5px 14px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
     h1 {
       font-family: 'Playfair Display', Georgia, serif;
       font-size: 2.2rem;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+      color: #FFFFFF;
     }
 
     .subtitle {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: var(--ink-secondary);
-      margin-bottom: 28px;
+      margin-bottom: 26px;
+    }
+
+    /* Google Drive Primary Download Button */
+    .drive-action-box {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), rgba(245, 158, 11, 0.04));
+      border: 1.5px solid rgba(245, 158, 11, 0.5);
+      border-radius: 14px;
+      padding: 24px;
+      margin: 24px 0;
+      text-align: center;
+    }
+
+    .drive-action-box h2 {
+      font-size: 1.25rem;
+      color: #FFFFFF;
+      margin-bottom: 6px;
+    }
+
+    .drive-action-box p {
+      font-size: 0.92rem;
+      color: var(--ink-secondary);
+      margin-bottom: 18px;
+    }
+
+    .btn-drive {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+      color: #0B0F19;
+      font-weight: 800;
+      font-size: 1.05rem;
+      padding: 16px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(245, 158, 11, 0.35);
+      transition: all 0.2s ease;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-drive:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(245, 158, 11, 0.5);
+      background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%);
     }
 
     .delivery-box {
-      background: #FAF8F5;
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--accent);
-      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
       padding: 20px;
       text-align: left;
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
     .delivery-box h3 {
-      font-size: 1rem;
-      margin-bottom: 8px;
-      color: var(--ink-primary);
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      color: var(--accent-gold);
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .delivery-box ul {
       padding-left: 20px;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--ink-secondary);
     }
 
     .delivery-box ul li {
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
 
-    .steps-list {
-      text-align: left;
-      margin: 24px 0;
-      font-size: 0.92rem;
-      color: var(--ink-secondary);
-    }
-
-    .steps-list p {
-      margin-bottom: 10px;
+    .delivery-box ul li strong {
+      color: var(--ink-primary);
     }
 
     .btn-home {
       display: inline-block;
-      background: var(--ink-primary);
-      color: #FFFFFF;
+      background: transparent;
+      color: var(--ink-secondary);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       font-weight: 600;
-      padding: 13px 28px;
-      border-radius: 6px;
+      font-size: 0.88rem;
+      padding: 10px 22px;
+      border-radius: 8px;
       text-decoration: none;
-      transition: background 0.2s ease;
+      transition: all 0.2s ease;
     }
 
     .btn-home:hover {
-      background: var(--accent);
+      color: #FFFFFF;
+      border-color: rgba(255, 255, 255, 0.3);
     }
 
     footer {
       margin-top: 24px;
       font-size: 0.82rem;
-      color: #888;
+      color: #64748B;
     }
   </style>
 </head>
@@ -134,26 +196,38 @@
 
   <div class="thank-you-card">
     <div class="success-badge">✓</div>
-    <span style="display: inline-block; background: #FFF3DB; color: #8E342B; border: 1px solid #D4A962; padding: 4px 12px; border-radius: 4px; font-weight: 700; font-size: 0.8rem; margin-bottom: 12px; letter-spacing: 0.05em;">🪔 DASARA SPECIAL · $1.00 PASS CONFIRMED</span>
-    <h1>Welcome to the Inner Circle!</h1>
-    <p class="subtitle">Thank you for acquiring <strong>The Instinctive Trust Skill</strong> (Amazon Retail: $75.00) directly from author <strong>Sai Shivarajuu M</strong>.</p>
+    <span class="special-badge">Order Confirmed · Instant Access</span>
+    <h1>Welcome to the Inner Circle</h1>
+    <p class="subtitle">Thank you for acquiring <strong>The Instinctive Trust Skill</strong> directly from author <strong>Sai Shivarajuu M</strong>.</p>
+
+    <!-- Instant Google Drive Download Box -->
+    <div class="drive-action-box">
+      <h2>📁 Instant Google Drive Access</h2>
+      <p>Your full 220-page book and all 6 action workbooks are ready inside your private drive folder:</p>
+      <a href="https://drive.google.com/drive/folders/1N9jjBjv17dADSmuTPiwxN96pbnaatLZt?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn-drive">
+        <span>⚡ Open Google Drive Folder & Download</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
+      </a>
+    </div>
 
     <div class="delivery-box">
-      <h3>📬 What happens next:</h3>
+      <h3>📦 What is included in your Google Drive:</h3>
       <ul>
-        <li>Your <strong>220-page full Ebook</strong> is on its way to your email.</li>
-        <li>Your <strong>5 Daily Workbook Action Plans (Day 1 through Day 5)</strong> are attached.</li>
-        <li>Your <strong>5-Day Master Workbook</strong> is also included.</li>
+        <li><strong>The Complete 220-Page Ebook</strong> — High-resolution full digital edition</li>
+        <li><strong>Day 1 Workbook</strong> — Anchoring Your Baseline & Radical Predictability</li>
+        <li><strong>Day 2 Workbook</strong> — Open Demeanor & Territory Expansion</li>
+        <li><strong>Day 3 Workbook</strong> — Gesture Mastery & Calming Stress Tells</li>
+        <li><strong>Day 4 Workbook</strong> — Reading Others & Disarming Confrontation</li>
+        <li><strong>Day 5 Workbook</strong> — Somatic Rehearsal & The 30-Day Integration</li>
+        <li><strong>5-Day Master Action Plan</strong> — Complete printable workbook</li>
       </ul>
     </div>
 
-    <div class="steps-list">
-      <p><strong>1. Check your email:</strong> Delivery happens automatically within 1–2 minutes.</p>
-      <p><strong>2. Check Spam / Promotions:</strong> If you don't see it in your Primary inbox, check your spam or promotions tab.</p>
-      <p><strong>3. Start with Day 1:</strong> Print or save Day 1's action plan and begin with the <em>3-Second Threshold Pause</em>.</p>
-    </div>
-
-    <a href="/" class="btn-home">Return to Homepage</a>
+    <a href="/" class="btn-home">← Return to Homepage</a>
   </div>
 
   <footer>
