@@ -8,13 +8,14 @@ const { Webhook } = require("standardwebhooks");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// --- Config from environment ---
-const DODO_WEBHOOK_KEY = process.env.DODO_WEBHOOK_KEY;
-const SMTP_HOST = process.env.SMTP_HOST;
+// --- Direct Configuration (Embedded for instant zero-config production) ---
+const DODO_WEBHOOK_KEY = process.env.DODO_WEBHOOK_KEY || "whsec_pIL8SQrBsOWV5qotZiKMBu+IMARmwRhi";
+const DODO_ENDPOINT_ID = process.env.DODO_ENDPOINT_ID || "ep_3KrtCuf00Rfih3nUCTw06a3tGeD";
+const SMTP_HOST = process.env.SMTP_HOST || "smtp.gmail.com";
 const SMTP_PORT = Number(process.env.SMTP_PORT || 587);
-const SMTP_USER = process.env.SMTP_USER;
-const SMTP_PASS = process.env.SMTP_PASS;
-const FROM_EMAIL = process.env.FROM_EMAIL || SMTP_USER || "books@theinstinctivetrust.com";
+const SMTP_USER = process.env.SMTP_USER || "saishivaraju.m1974@gmail.com";
+const SMTP_PASS = process.env.SMTP_PASS || "bxug irfb yfvm obdc";
+const FROM_EMAIL = process.env.FROM_EMAIL || '"Sai Shivarajuu M" <saishivaraju.m1974@gmail.com>';
 const BOOK_TITLE = process.env.BOOK_TITLE || "The Instinctive Trust Skill";
 const AUTHOR_NAME = process.env.AUTHOR_NAME || "Sai Shivarajuu M";
 
@@ -25,11 +26,9 @@ const WORKBOOKS_DIR = path.join(PRODUCTS_DIR, "workbooks");
 const CHAPTER_1_PATH = path.join(PUBLIC_DIR, "downloads", "The_Instinctive_Trust_Skill_Chapter_1.pdf");
 const EBOOK_PATH = path.join(PRODUCTS_DIR, "The_Instinctive_Trust_Skill_EBOOK.pdf");
 
-if (!DODO_WEBHOOK_KEY) {
-  console.warn("\x1b[33m%s\x1b[0m", "[WARN] DODO_WEBHOOK_KEY is not set in .env. Live webhook verification will fail until set.");
-}
+console.log(`[Config] Dodo Webhook Key configured: ${DODO_WEBHOOK_KEY.substring(0, 10)}... (Endpoint: ${DODO_ENDPOINT_ID})`);
 
-const webhook = new Webhook(DODO_WEBHOOK_KEY || "whsec_placeholder");
+const webhook = new Webhook(DODO_WEBHOOK_KEY);
 
 // Configure Transporter (supports mock mode if credentials not yet added)
 const isSmtpConfigured = Boolean(SMTP_HOST && SMTP_USER && SMTP_PASS);
