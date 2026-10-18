@@ -72,43 +72,80 @@ app.post(
       return res.status(401).send("Invalid signature");
     }
 
-    // Acknowledge receipt immediately so Dodo doesn't retry
-    res.status(200).send("ok");
-
     try {
       await handleDodoEvent(payload);
+      return res.status(200).send("ok");
     } catch (err) {
       console.error("[Webhook Error] Error processing payload:", err);
+      return res.status(500).send("Error processing event");
     }
   }
 );
 
 // 1B. Razorpay Webhook Route (for automatic Gmail delivery to Indian buyers)
 app.post("/webhook/razorpay", express.json(), async (req, res) => {
-  res.status(200).json({ status: "ok" });
-
   try {
     const event = req.body.event;
+    console.log(`[Razorpay Webhook] Received event: ${event}`);
+
     if (event === "payment.captured" || event === "order.paid") {
-      const payment = req.body.payload?.payment?.entity || {};
-      const customerEmail = payment.email;
-      const customerName = payment.notes?.name || "Reader";
+      const payment = req.body.payload?.payment?.entity || req.body.payload?.payment || {};
+      const customerEmail =
+        payment.email ||
+        payment.notes?.email ||
+        payment.notes?.Email ||
+        payment.notes?.['@email'] ||
+        req.body.payload?.order?.entity?.notes?.email;
+
+      const customerName =
+        payment.notes?.name ||
+        payment.notes?.Name ||
+        payment.notes?.['@name'] ||
+        (customerEmail ? customerEmail.split('@')[0] : "Reader");
+
       const paymentId = payment.id || `rzp_${Date.now()}`;
 
       if (customerEmail && !processedPaymentIds.has(paymentId)) {
         console.log(`[Razorpay Webhook] Payment captured for ${customerEmail} (₹10). Dispatching book email...`);
         await sendBookPackage(customerEmail, customerName, paymentId);
         processedPaymentIds.add(paymentId);
+      } else {
+        console.warn(`[Razorpay Webhook] Missing customerEmail or already processed: ${customerEmail}, ${paymentId}`);
       }
     }
+
+    return res.status(200).json({ status: "ok" });
   } catch (err) {
     console.error("[Razorpay Webhook Error]:", err);
+    return res.status(500).json({ status: "error", message: err.message });
   }
 });
 
 // 2. Body parser for regular JSON & URL-encoded routes
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// 2B. Instant Deliver-To API (works via GET or POST for one-click manual deliveries/resends)
+app.all("/api/deliver-to", async (req, res) => {
+  const targetEmail = req.query.email || req.body?.email;
+  const targetName = req.query.name || req.body?.name || "Valued Reader";
+
+  if (!targetEmail) {
+    return res.status(400).json({ error: "Missing email parameter: ?email=name@example.com" });
+  }
+
+  try {
+    const result = await sendBookPackage(targetEmail, targetName, `MANUAL_${Date.now()}`);
+    return res.json({
+      success: true,
+      message: `Complete book package successfully delivered to ${targetEmail}`,
+      details: result
+    });
+  } catch (err) {
+    console.error("Manual delivery failed:", err);
+    return res.status(500).json({ error: "Delivery failed", details: err.message });
+  }
+});
 
 // 3. Serve static frontend assets
 app.use(express.static(PUBLIC_DIR));
