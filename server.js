@@ -83,6 +83,29 @@ app.post(
   }
 );
 
+// 1B. Razorpay Webhook Route (for automatic Gmail delivery to Indian buyers)
+app.post("/webhook/razorpay", express.json(), async (req, res) => {
+  res.status(200).json({ status: "ok" });
+
+  try {
+    const event = req.body.event;
+    if (event === "payment.captured" || event === "order.paid") {
+      const payment = req.body.payload?.payment?.entity || {};
+      const customerEmail = payment.email;
+      const customerName = payment.notes?.name || "Reader";
+      const paymentId = payment.id || `rzp_${Date.now()}`;
+
+      if (customerEmail && !processedPaymentIds.has(paymentId)) {
+        console.log(`[Razorpay Webhook] Payment captured for ${customerEmail} (₹10). Dispatching book email...`);
+        await sendBookPackage(customerEmail, customerName, paymentId);
+        processedPaymentIds.add(paymentId);
+      }
+    }
+  } catch (err) {
+    console.error("[Razorpay Webhook Error]:", err);
+  }
+});
+
 // 2. Body parser for regular JSON & URL-encoded routes
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
