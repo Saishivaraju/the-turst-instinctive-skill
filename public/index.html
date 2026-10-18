@@ -1048,6 +1048,242 @@
       margin-top: 80px;
     }
 
+    /* Pulse animation for impulse buy buttons */
+    @keyframes goldPulse {
+      0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.6); }
+      70% { box-shadow: 0 0 0 12px rgba(245, 158, 11, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+    }
+
+    .btn-gold {
+      animation: goldPulse 2.2s infinite;
+    }
+
+    /* Amazon Proof & Value Contrast Section */
+    .amazon-proof-section {
+      background: #090D16;
+      color: #FFFFFF;
+      padding: 64px 0;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid rgba(245, 158, 11, 0.2);
+      border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    .amazon-proof-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .proof-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 36px;
+    }
+
+    .proof-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(245, 158, 11, 0.15);
+      color: #FDE68A;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .proof-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    .proof-desc {
+      font-size: 1rem;
+      color: #94A3B8;
+      line-height: 1.6;
+    }
+
+    .amazon-proof-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .amazon-screenshot-card {
+      background: #131A29;
+      border: 1.5px solid rgba(245, 158, 11, 0.4);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(245, 158, 11, 0.1);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+      display: block;
+      position: relative;
+    }
+
+    .amazon-screenshot-card:hover {
+      transform: translateY(-4px);
+      border-color: #F59E0B;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 35px rgba(245, 158, 11, 0.25);
+    }
+
+    .amazon-card-header {
+      background: #1E293B;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .amazon-header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #F8FAFC;
+    }
+
+    .amazon-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #10B981;
+      box-shadow: 0 0 8px #10B981;
+    }
+
+    .amazon-view-link {
+      font-size: 0.78rem;
+      color: #F59E0B;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .amazon-img-wrapper {
+      position: relative;
+      background: #FFFFFF;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .amazon-img-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .amazon-screenshot-card:hover .amazon-img-wrapper img {
+      transform: scale(1.015);
+    }
+
+    .amazon-card-footer {
+      padding: 12px 18px;
+      background: #131A29;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: #94A3B8;
+    }
+
+    .amazon-contrast-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-md);
+      padding: 28px;
+    }
+
+    .contrast-badge {
+      display: inline-block;
+      background: rgba(245, 158, 11, 0.15);
+      color: #FDE68A;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    .contrast-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+
+    .contrast-desc {
+      font-size: 0.92rem;
+      color: #94A3B8;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .comparison-pills {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .comp-pill {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+    }
+
+    .comp-pill.amazon-pill {
+      background: rgba(220, 38, 38, 0.1);
+      border: 1px solid rgba(220, 38, 38, 0.25);
+      color: #FCA5A5;
+    }
+
+    .comp-pill.direct-pill {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #6EE7B7;
+      font-weight: 700;
+    }
+
+    .trust-badges-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 14px;
+      font-size: 0.76rem;
+      color: #94A3B8;
+      flex-wrap: wrap;
+    }
+
     /* Mobile Sticky Bottom Dock */
     .mobile-dock {
       display: none;
@@ -1055,12 +1291,12 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(255, 255, 255, 0.98);
-      border-top: 1px solid var(--border-light);
-      backdrop-filter: blur(14px);
+      background: rgba(9, 13, 22, 0.96);
+      border-top: 1.5px solid rgba(245, 158, 11, 0.4);
+      backdrop-filter: blur(16px);
       padding: 10px 16px;
-      z-index: 999;
-      box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+      z-index: 9999;
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6);
       align-items: center;
       justify-content: space-between;
       gap: 12px;
@@ -1073,14 +1309,14 @@
     }
 
     .dock-title {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--text-main);
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #FFFFFF;
     }
 
     .dock-deal {
-      font-size: 0.74rem;
-      color: #D97706;
+      font-size: 0.78rem;
+      color: #F59E0B;
       font-weight: 700;
     }
 
@@ -1090,8 +1326,10 @@
     }
 
     .dock-btns .btn {
-      padding: 8px 14px;
-      font-size: 0.76rem;
+      padding: 11px 18px;
+      font-size: 0.88rem;
+      font-weight: 800;
+      box-shadow: 0 4px 16px rgba(245, 158, 11, 0.4);
     }
 
     /* Responsive */
@@ -1099,7 +1337,7 @@
       .hero-grid {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 40px;
+        gap: 36px;
       }
       .kicker-pill, .hero-proof-strip, .hero-cta-group, .anchor-meta {
         justify-content: center;
@@ -1107,6 +1345,10 @@
       .amazon-anchor-card {
         flex-direction: column;
         text-align: center;
+      }
+      .amazon-proof-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
       }
       .pillars-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1124,14 +1366,14 @@
 
     @media (max-width: 768px) {
       body {
-        padding-bottom: 74px;
+        padding-bottom: 78px;
       }
       .mobile-dock {
         display: flex;
       }
       .navbar {
         top: 0;
-        padding: 10px 0;
+        padding: 8px 0;
       }
       .top-flash-bar {
         position: relative;
@@ -1140,35 +1382,58 @@
       .flash-inner {
         flex-direction: column;
         text-align: center;
-        gap: 8px;
+        gap: 6px;
       }
       .nav-inner {
         flex-direction: column;
-        gap: 10px;
+        gap: 8px;
         text-align: center;
       }
       .nav-actions {
         width: 100%;
         justify-content: center;
+        gap: 8px;
+      }
+      .hero-title {
+        font-size: 2.1rem;
+        line-height: 1.2;
+      }
+      .hero-subtitle {
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+      .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+      }
+      .hero-cta-group .btn {
+        width: 100%;
+        padding: 15px 20px;
+        font-size: 1rem;
+      }
+      .hero-proof-strip {
+        flex-direction: column;
+        gap: 6px;
+        align-items: center;
       }
       .pillars-grid, .workbooks-grid {
         grid-template-columns: 1fr;
       }
       .reading-wrapper {
-        padding: 30px 20px;
+        padding: 24px 16px;
       }
       .reading-header h3 {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
       }
       .reading-cta-banner {
         flex-direction: column;
         text-align: center;
       }
       .edition-box {
-        padding: 30px 20px;
+        padding: 24px 16px;
       }
       .cta-card {
-        padding: 40px 20px;
+        padding: 36px 18px;
       }
     }
   </style>
@@ -1299,6 +1564,79 @@
       </div>
     </div>
   </header>
+
+  <!-- ⭐ VERIFIED AMAZON LISTING & VALUE PROOF SECTION -->
+  <section class="amazon-proof-section">
+    <div class="container">
+      <div class="proof-header">
+        <div class="proof-badge">
+          <span>⭐</span> Official Amazon Marketplace Verification
+        </div>
+        <h2 class="proof-title">Retails on Amazon for $75.00.<br/>Direct Flash Pass: $1.00 / ₹10.</h2>
+        <p class="proof-desc">
+          Click the official Amazon listing below to inspect live pricing. During our 7-day Dasara Author Release, skip $54+ retail costs and acquire the complete master package directly from the author.
+        </p>
+      </div>
+
+      <div class="amazon-proof-grid">
+        
+        <!-- Left: Interactive Clickable Amazon Screenshot -->
+        <a href="https://a.co/d/0eWd2cYy" target="_blank" rel="noopener noreferrer" class="amazon-screenshot-card" title="Click to view live listing on Amazon.com">
+          <div class="amazon-card-header">
+            <div class="amazon-header-left">
+              <span class="amazon-dot"></span>
+              <span>Amazon.com: Books › Self-Help › Self-Esteem</span>
+            </div>
+            <div class="amazon-view-link">
+              <span>Inspect Live Listing ↗</span>
+            </div>
+          </div>
+          <div class="amazon-img-wrapper">
+            <img 
+              src="/assets/amazon_listing.png" 
+              alt="The Instinctive Trust Skill by Sai Shivarajuu M on Amazon.com" 
+              loading="lazy"
+            />
+          </div>
+          <div class="amazon-card-footer">
+            <span><strong>Verified Listing:</strong> B0DFJ1ZJ78 · Published Sept 2026</span>
+            <span style="color: #F59E0B; font-weight: 700;">List Price: $75.00 · Click to Verify</span>
+          </div>
+        </a>
+
+        <!-- Right: Direct Comparison & Impulse Buy Box -->
+        <div class="amazon-contrast-box">
+          <span class="contrast-badge">Why Direct From Author?</span>
+          <h3 class="contrast-title">Skip Middlemen Fees.<br/>Support the Author Directly.</h3>
+          <p class="contrast-desc">
+            Amazon takes over 60% in distributor cuts. By ordering direct on this page, you get the exact full ebook, all 5 action workbooks, and instant Google Drive delivery for less than a cup of chai.
+          </p>
+
+          <div class="comparison-pills">
+            <div class="comp-pill amazon-pill">
+              <span><strong>Amazon Paperback:</strong> $30.31 + $24 Ship</span>
+              <span><strong>$54.53 Total</strong> (Wait 2 Weeks)</span>
+            </div>
+            <div class="comp-pill direct-pill">
+              <span id="contrastDirectLabel"><strong>Direct Digital Pass:</strong> ₹10 / $1.00</span>
+              <span><strong>INSTANT ACCESS</strong> (Save 99%)</span>
+            </div>
+          </div>
+
+          <a href="#pricing" class="btn btn-gold" style="width: 100%; text-align: center; justify-content: center; font-size: 1.05rem;" id="contrastCtaBtn">
+            Claim Your Direct Pass Now ➔
+          </a>
+
+          <div class="trust-badges-row">
+            <span>🔒 256-Bit SSL Encrypted</span>
+            <span>⚡ Instant Google Drive Access</span>
+            <span>📱 100% Mobile Ready</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- THE 4 PILLARS -->
   <section class="section section-light">
@@ -1633,6 +1971,8 @@
         finalBtn: 'Acquire Full Volume & Workbooks · ₹10 (Save ₹5,989)',
         dockSub: '🪔 Dasara Flash: ₹10 <span style="text-decoration: line-through; opacity: 0.7;">₹5,999</span>',
         dockBtn: 'Buy ₹10',
+        contrastDirect: '<strong>Direct Digital Pass:</strong> ₹10 <span style="margin-left: 6px; font-size: 0.85em; color: #6EE7B7;">(Save ₹5,989 · 99.8% OFF)</span>',
+        contrastBtn: 'Claim Complete Master Volume · ₹10 ➔',
         checkoutUrl: INDIA_CHECKOUT_URL
       },
       GLOBAL: {
@@ -1651,6 +1991,8 @@
         finalBtn: 'Acquire Full Volume & Workbooks · $1.00 (Save $74)',
         dockSub: '🪔 Dasara Flash: $1.00 <span style="text-decoration: line-through; opacity: 0.7;">$75</span>',
         dockBtn: 'Buy $1.00',
+        contrastDirect: '<strong>Direct Digital Pass:</strong> $1.00 <span style="margin-left: 6px; font-size: 0.85em; color: #6EE7B7;">(Save $74 · 98.7% OFF)</span>',
+        contrastBtn: 'Claim Complete Master Volume · $1.00 ➔',
         checkoutUrl: DODO_CHECKOUT_URL
       }
     };
@@ -1687,7 +2029,9 @@
         { id: "finalOfferDesc", text: data.finalOffer },
         { id: "finalBuyBtn", text: data.finalBtn },
         { id: "dockSub", html: data.dockSub },
-        { id: "dockBuyBtn", text: data.dockBtn }
+        { id: "dockBuyBtn", text: data.dockBtn },
+        { id: "contrastDirectLabel", html: data.contrastDirect },
+        { id: "contrastCtaBtn", text: data.contrastBtn }
       ];
 
       elMap.forEach(item => {
@@ -1704,7 +2048,8 @@
         document.getElementById("navBuyBtn"),
         document.getElementById("heroBuyBtn"),
         document.getElementById("finalBuyBtn"),
-        document.getElementById("dockBuyBtn")
+        document.getElementById("dockBuyBtn"),
+        document.getElementById("contrastCtaBtn")
       ];
 
       buyButtons.forEach(btn => {
