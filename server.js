@@ -58,9 +58,9 @@ app.post(
     }
 
     const webhookHeaders = {
-      "webhook-id": req.header("webhook-id") || "",
-      "webhook-signature": req.header("webhook-signature") || "",
-      "webhook-timestamp": req.header("webhook-timestamp") || "",
+      "webhook-id": req.header("webhook-id") || req.header("svix-id") || "",
+      "webhook-signature": req.header("webhook-signature") || req.header("svix-signature") || "",
+      "webhook-timestamp": req.header("webhook-timestamp") || req.header("svix-timestamp") || "",
     };
 
     let payload;
@@ -221,8 +221,12 @@ async function handleDodoEvent(payload) {
 
   const isSuccessfulPayment =
     eventType === "payment.succeeded" ||
+    eventType === "payment.successful" ||
     eventType === "checkout.session.completed" ||
-    data.status === "succeeded";
+    eventType === "checkout.completed" ||
+    eventType === "order.completed" ||
+    data.status === "succeeded" ||
+    data.status === "successful";
 
   if (!isSuccessfulPayment) {
     console.log(`[Dodo Webhook] Event ignored: ${eventType}`);
@@ -230,8 +234,8 @@ async function handleDodoEvent(payload) {
   }
 
   const paymentId = data.payment_id || data.id || `order_${Date.now()}`;
-  const customerEmail = data.customer?.email || data.customer_email;
-  const customerName = data.customer?.name || "Reader";
+  const customerEmail = data.customer?.email || data.customer_email || data.email;
+  const customerName = data.customer?.name || data.customer_name || data.name || (customerEmail ? customerEmail.split('@')[0] : "Reader");
 
   if (!customerEmail) {
     console.error("[Dodo Webhook] No customer email in payload:", data);
