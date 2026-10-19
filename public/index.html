@@ -823,11 +823,9 @@
     }
 
     .editions-container {
-      display: grid;
-      grid-template-columns: 1fr 1.25fr;
-      gap: 32px;
-      max-width: 980px;
+      max-width: 680px;
       margin: 0 auto;
+      width: 100%;
     }
 
     .edition-box {
@@ -1870,9 +1868,9 @@
       }
 
       .editions-container {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 20px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
       }
 
       .edition-box {
@@ -2086,9 +2084,6 @@
           <button type="button" class="curr-btn active" data-country="IN">🇮🇳 ₹99</button>
           <button type="button" class="curr-btn" data-country="GLOBAL">🌍 $4.99</button>
         </div>
-        <a href="/download/chapter-1" class="btn btn-outline btn-sm" id="navFreeBtn">
-          Free Chapter 1
-        </a>
         <a href="https://rzp.io/rzp/ZyURlHY" class="btn btn-gold btn-sm" id="navBuyBtn" target="_blank" rel="noopener noreferrer">
           Acquire for ₹99
         </a>
@@ -2136,9 +2131,6 @@
           <div class="hero-cta-group">
             <a href="https://rzp.io/rzp/ZyURlHY" class="btn btn-gold" id="heroBuyBtn" target="_blank" rel="noopener noreferrer">
               Claim Direct Ebook · ₹99 <span style="text-decoration: line-through; opacity: 0.7; font-size: 0.85em; margin-left: 4px;">₹5,999</span>
-            </a>
-            <a href="/download/chapter-1" class="btn btn-outline" id="heroFreeBtn">
-              Download Chapter 1 Free (PDF)
             </a>
           </div>
 
@@ -2337,54 +2329,13 @@
     </div>
   </section>
 
-  <!-- CHAPTER 1 REAL READING PREVIEW -->
-  <section class="section section-light">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Free Chapter Preview</span>
-        <h2 class="section-title">Read an Extract from Chapter One</h2>
-        <p class="section-desc">The opening breakthrough from Chapter 1 of the official published ebook.</p>
-      </div>
-
-      <div class="reading-wrapper">
-        <div class="reading-header">
-          <div class="reading-kicker">Part I · Understanding Confidence and Trust</div>
-          <h3>Chapter 1: What Confidence Really Is</h3>
-          <p class="reading-quote">"You do not need to feel confident to act confidently."</p>
-        </div>
-
-        <div class="reading-content">
-          <p>
-            Maya had been standing outside her manager's office for four minutes. Her notes were ready. Her 3-minute pitch was memorized. Everything was ready—<strong>except the feeling</strong>. Maya was waiting to <em>feel</em> confident before knocking.
-          </p>
-          <p>
-            A senior colleague walked past, glanced at her hesitating in the hallway, and said: <em>"Just go. It never feels ready."</em> Then he pushed his own door open and walked in.
-          </p>
-          <p>
-            Maya knocked. The conversation went fine. Walking back to her desk, she opened her notebook and wrote four words: <strong>I didn't wait.</strong>
-          </p>
-        </div>
-
-        <div class="reading-cta-banner">
-          <div class="rcb-left">
-            <h4>Read the Complete 14-Page Chapter 1 (PDF)</h4>
-            <p>Download the full opening chapter with zero cost and no credit card required.</p>
-          </div>
-          <a href="/download/chapter-1" class="btn btn-dark" id="excerptDownloadBtn">
-            Download Chapter 1 Free
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- PRICING & EDITIONS -->
   <section id="pricing" class="section">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Direct Acquisition</span>
-        <h2 class="section-title">Choose Your Edition</h2>
-        <p class="section-desc">Download the complimentary opening chapter or invest in the complete 220-page work + companion workbooks.</p>
+        <h2 class="section-title">Direct Author Launch Pass</h2>
+        <p class="section-desc">Acquire the complete 220-page master volume alongside all 5 action workbooks directly from the author.</p>
       </div>
 
       <!-- Currency Switcher Row -->
@@ -2398,35 +2349,7 @@
 
       <div class="editions-container">
         
-        <!-- Edition I: Free -->
-        <div class="edition-box">
-          <div>
-            <div class="box-badge">Edition I · Complimentary</div>
-            <h3>Chapter 1 Preview</h3>
-            <p class="edition-summary">The complete opening chapter directly extracted from the master volume in high-resolution PDF format.</p>
-            
-            <div class="price-strip">
-              <span class="price-curr">$</span>
-              <span class="price-num">0</span>
-              <div class="price-strike-wrap">
-                <span style="font-size: 0.85rem; color: #059669; font-weight: 700;">FREE FOREVER</span>
-              </div>
-            </div>
-
-            <ul class="feature-list">
-              <li><span class="feature-check">✓</span> <span><strong>Full Chapter 1:</strong> "What Confidence Really Is"</span></li>
-              <li><span class="feature-check">✓</span> <span>Maya's breakthrough doorway study</span></li>
-              <li><span class="feature-check">✓</span> <span>The biological threat-detection mechanism</span></li>
-              <li><span class="feature-check">✓</span> <span>Instant 1-click download with zero friction</span></li>
-            </ul>
-          </div>
-
-          <a href="/download/chapter-1" class="btn btn-outline" style="width: 100%;" id="cardFreeBtn">
-            Download Chapter 1 Free
-          </a>
-        </div>
-
-        <!-- Edition II: Master Volume -->
+        <!-- Master Volume Package -->
         <div class="edition-box featured">
           <div class="top-ribbon">🪔 Dasara Flash · 7 Days Only</div>
           <div>
@@ -2510,9 +2433,6 @@
           <a href="https://rzp.io/rzp/ZyURlHY" class="btn btn-gold" id="finalBuyBtn" target="_blank" rel="noopener noreferrer">
             Acquire Full Volume & Workbooks · ₹99 (Save ₹5,900)
           </a>
-          <a href="/download/chapter-1" class="btn btn-outline" id="finalFreeBtn">
-            Download Chapter 1 Free
-          </a>
         </div>
       </div>
 
@@ -2526,7 +2446,6 @@
       <span class="dock-deal" id="dockSub">⚡ Launch Special: ₹99 <span style="text-decoration: line-through; opacity: 0.7;">₹5,999</span></span>
     </div>
     <div class="dock-btns">
-      <a href="/download/chapter-1" class="btn btn-outline">Free Ch. 1</a>
       <a href="https://rzp.io/rzp/ZyURlHY" class="btn btn-gold" id="dockBuyBtn" target="_blank" rel="noopener noreferrer">
         Buy ₹99
       </a>
