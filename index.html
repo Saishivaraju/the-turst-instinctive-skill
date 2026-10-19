@@ -63,6 +63,14 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      max-width: 100%;
+    }
+
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+      position: relative;
     }
 
     html {
@@ -97,6 +105,7 @@
       max-width: 1180px;
       margin: 0 auto;
       padding: 0 24px;
+      box-sizing: border-box;
     }
 
     /* ==========================================================================
@@ -1364,76 +1373,632 @@
       }
     }
 
+    /* ==========================================================================
+       DEDICATED MOBILE APP-GRADE UI (< 768px)
+       Completely transforms the mobile experience into a sleek, native-feel app:
+       - 100% Zero clipped text or horizontal overflow
+       - Polished app-bar navigation with instant currency toggle
+       - High-impact mobile hero with 3D book cover and ambient gold lighting
+       - App-grade card design for 4 Pillars and 5 Workbooks with glowing badges
+       - Kindle-style reading preview with clean typography
+       - Ergonomic bottom dock with 1-tap thumb CTA
+       ========================================================================== */
     @media (max-width: 768px) {
       body {
-        padding-bottom: 78px;
+        padding-bottom: 84px !important;
+        font-size: 15px;
+        background-color: #080C15;
+        color: #F1F5F9;
       }
-      .mobile-dock {
-        display: flex;
+
+      .container {
+        padding: 0 16px !important;
+        width: 100% !important;
+        max-width: 100% !important;
       }
-      .navbar {
-        top: 0;
-        padding: 8px 0;
-      }
+
+      /* Mobile App Header Bar */
       .top-flash-bar {
-        position: relative;
-        padding: 8px 0;
+        position: relative !important;
+        top: 0 !important;
+        padding: 6px 0 !important;
+        background: linear-gradient(90deg, #1A120B 0%, #2D1A07 50%, #1A120B 100%) !important;
+        border-bottom: 1px solid rgba(245, 158, 11, 0.3) !important;
       }
+
       .flash-inner {
-        flex-direction: column;
-        text-align: center;
-        gap: 6px;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 6px !important;
+        padding: 0 !important;
       }
+
+      .flash-left {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 4px !important;
+        text-align: center !important;
+      }
+
+      .flash-badge {
+        font-size: 0.7rem !important;
+        padding: 2px 8px !important;
+      }
+
+      .flash-text {
+        font-size: 0.78rem !important;
+        line-height: 1.35 !important;
+      }
+
+      .flash-inner > div:last-child {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        flex-wrap: wrap !important;
+      }
+
+      .flash-timer {
+        padding: 3px 8px !important;
+        font-size: 0.75rem !important;
+        gap: 2px !important;
+      }
+
+      .flash-cta {
+        display: none !important; /* Handled by sticky bottom dock */
+      }
+
+      /* App-Style Sticky Navbar */
+      .navbar {
+        top: 0 !important;
+        padding: 8px 0 !important;
+        background: rgba(9, 13, 22, 0.96) !important;
+        backdrop-filter: blur(20px) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+      }
+
       .nav-inner {
-        flex-direction: column;
-        gap: 8px;
-        text-align: center;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 8px !important;
+        text-align: left !important;
       }
+
+      .brand-logo {
+        gap: 8px !important;
+      }
+
+      .brand-avatar {
+        width: 32px !important;
+        height: 32px !important;
+        border-width: 1.5px !important;
+      }
+
+      .brand-titles h2 {
+        font-size: 0.88rem !important;
+        color: #F8FAFC !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        max-width: 160px !important;
+      }
+
+      .brand-titles p {
+        display: none !important;
+      }
+
       .nav-actions {
-        width: 100%;
-        justify-content: center;
-        gap: 8px;
+        width: auto !important;
+        gap: 6px !important;
       }
+
+      #navFreeBtn, #navBuyBtn {
+        display: none !important; /* Actions are in Hero and Sticky Dock */
+      }
+
+      .currency-switcher {
+        padding: 2px !important;
+        background: rgba(255, 255, 255, 0.06) !important;
+        border-color: rgba(245, 158, 11, 0.3) !important;
+      }
+
+      .curr-btn {
+        padding: 4px 8px !important;
+        font-size: 0.72rem !important;
+      }
+
+      /* Mobile Hero Section */
+      .hero-section {
+        padding: 24px 0 36px !important;
+        background: radial-gradient(circle at 50% 15%, rgba(245, 158, 11, 0.12) 0%, transparent 60%), #080C15 !important;
+      }
+
+      .hero-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 20px !important;
+      }
+
+      .hero-visual {
+        order: 1 !important; /* Book cover appears FIRST on mobile */
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        margin: 6px 0 12px !important;
+      }
+
+      .hero-content {
+        order: 2 !important;
+        width: 100% !important;
+      }
+
+      .book-3d-wrap {
+        width: 200px !important;
+        max-width: 65vw !important;
+        transform: rotate(-2deg) !important;
+        filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.8)) !important;
+      }
+
+      .glow-backdrop {
+        width: 100% !important;
+        height: 100% !important;
+      }
+
+      .floating-author-badge {
+        bottom: -8px !important;
+        right: -6px !important;
+        padding: 5px 10px !important;
+        font-size: 0.72rem !important;
+      }
+
+      .kicker-pill {
+        font-size: 0.72rem !important;
+        padding: 4px 10px !important;
+        margin-bottom: 12px !important;
+        display: inline-flex !important;
+      }
+
       .hero-title {
-        font-size: 2.1rem;
-        line-height: 1.2;
+        font-size: 1.85rem !important;
+        line-height: 1.2 !important;
+        color: #F8FAFC !important;
+        margin-bottom: 12px !important;
       }
+
+      .hero-title .highlight {
+        background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 100%) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+      }
+
       .hero-subtitle {
-        font-size: 1rem;
-        line-height: 1.5;
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+        color: #94A3B8 !important;
+        margin-bottom: 16px !important;
       }
+
+      /* Mobile Verified Amazon Card */
+      .amazon-anchor-card {
+        padding: 12px 14px !important;
+        background: rgba(19, 26, 41, 0.9) !important;
+        border: 1px solid rgba(245, 158, 11, 0.3) !important;
+        border-radius: 14px !important;
+        gap: 8px !important;
+        margin-bottom: 16px !important;
+        width: 100% !important;
+      }
+
+      .anchor-meta {
+        flex-direction: column !important;
+        gap: 6px !important;
+      }
+
+      .anchor-pricing-text {
+        font-size: 0.86rem !important;
+        color: #F1F5F9 !important;
+      }
+
+      .hero-description {
+        font-size: 0.88rem !important;
+        line-height: 1.6 !important;
+        color: #CBD5E1 !important;
+        margin-bottom: 20px !important;
+      }
+
+      /* Mobile Hero CTA Buttons */
       .hero-cta-group {
-        flex-direction: column;
-        width: 100%;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        width: 100% !important;
       }
+
       .hero-cta-group .btn {
-        width: 100%;
-        padding: 15px 20px;
-        font-size: 1rem;
+        width: 100% !important;
+        padding: 14px 18px !important;
+        font-size: 0.98rem !important;
+        border-radius: 12px !important;
       }
+
       .hero-proof-strip {
-        flex-direction: column;
-        gap: 6px;
-        align-items: center;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 6px 12px !important;
+        font-size: 0.75rem !important;
+        color: #94A3B8 !important;
+        margin-top: 14px !important;
       }
-      .pillars-grid, .workbooks-grid {
-        grid-template-columns: 1fr;
+
+      /* Mobile Amazon Verification Section */
+      .amazon-proof-section {
+        padding: 36px 0 !important;
+        background: #0B101D !important;
       }
+
+      .proof-header {
+        margin-bottom: 20px !important;
+      }
+
+      .proof-title {
+        font-size: 1.35rem !important;
+        line-height: 1.3 !important;
+      }
+
+      .proof-desc {
+        font-size: 0.86rem !important;
+        line-height: 1.5 !important;
+      }
+
+      .amazon-proof-grid {
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
+      }
+
+      .amazon-contrast-box {
+        padding: 18px 14px !important;
+        border-radius: 16px !important;
+      }
+
+      .comparison-pills {
+        flex-direction: column !important;
+        gap: 8px !important;
+      }
+
+      .comp-pill {
+        padding: 10px 12px !important;
+        font-size: 0.82rem !important;
+      }
+
+      /* ⭐ MOBILE REDESIGN FOR THE 4 PILLARS SECTION */
+      .section {
+        padding: 36px 0 !important;
+      }
+
+      .section.section-light {
+        background: #0E1526 !important; /* Sleek dark canvas on mobile */
+        color: #F1F5F9 !important;
+      }
+
+      .section-header {
+        margin-bottom: 22px !important;
+        text-align: center !important;
+      }
+
+      .section-tag {
+        font-size: 0.72rem !important;
+        letter-spacing: 0.08em !important;
+      }
+
+      .section-title {
+        font-size: 1.55rem !important;
+        line-height: 1.25 !important;
+        color: #FFFFFF !important;
+      }
+
+      .section-desc {
+        font-size: 0.88rem !important;
+        line-height: 1.5 !important;
+        color: #94A3B8 !important;
+      }
+
+      .pillars-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+      }
+
+      .pillar-card {
+        background: rgba(19, 26, 43, 0.9) !important;
+        border: 1px solid rgba(245, 158, 11, 0.25) !important;
+        border-left: 4px solid #F59E0B !important;
+        border-radius: 14px !important;
+        padding: 18px 16px !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+        transition: none !important;
+      }
+
+      .pillar-icon {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 0.88rem !important;
+        font-weight: 800 !important;
+        background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%) !important;
+        color: #090D16 !important;
+        border-radius: 8px !important;
+        margin-bottom: 4px !important;
+      }
+
+      .pillar-card h3 {
+        font-size: 1.15rem !important;
+        color: #F8FAFC !important;
+        margin: 0 !important;
+      }
+
+      .pillar-card p {
+        font-size: 0.88rem !important;
+        line-height: 1.5 !important;
+        color: #CBD5E1 !important;
+        margin: 0 !important;
+      }
+
+      /* ⭐ MOBILE REDESIGN FOR THE 5 ACTION WORKBOOKS */
+      .workbooks-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+      }
+
+      .wb-card {
+        background: rgba(19, 26, 43, 0.9) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 14px !important;
+        padding: 16px !important;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+      }
+
+      .wb-day-badge {
+        font-size: 0.72rem !important;
+        padding: 2px 8px !important;
+        margin-bottom: 8px !important;
+      }
+
+      .wb-card h4 {
+        font-size: 1.05rem !important;
+        color: #F8FAFC !important;
+        margin-bottom: 6px !important;
+      }
+
+      .wb-card p {
+        font-size: 0.85rem !important;
+        line-height: 1.45 !important;
+        color: #94A3B8 !important;
+      }
+
+      /* Mobile Kindle / Reading Preview */
       .reading-wrapper {
-        padding: 24px 16px;
+        padding: 20px 16px !important;
+        background: #111827 !important;
+        border: 1px solid rgba(245, 158, 11, 0.3) !important;
+        border-radius: 16px !important;
       }
+
       .reading-header h3 {
-        font-size: 1.5rem;
+        font-size: 1.3rem !important;
+        color: #F8FAFC !important;
       }
+
+      .reading-quote {
+        font-size: 0.92rem !important;
+        color: #FDE68A !important;
+      }
+
+      .reading-content p {
+        font-size: 0.92rem !important;
+        line-height: 1.65 !important;
+        color: #E2E8F0 !important;
+        margin-bottom: 14px !important;
+      }
+
       .reading-cta-banner {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 12px !important;
+        padding: 16px !important;
+        border-radius: 12px !important;
       }
+
+      .reading-cta-banner h4 {
+        font-size: 1.05rem !important;
+      }
+
+      .reading-cta-banner .btn {
+        width: 100% !important;
+      }
+
+      /* Mobile Pricing Section */
+      .pricing-toggle-row {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 8px !important;
+        margin-bottom: 24px !important;
+      }
+
+      .editions-container {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+      }
+
       .edition-box {
-        padding: 24px 16px;
+        padding: 22px 16px !important;
+        border-radius: 18px !important;
+        background: #111827 !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        color: #F1F5F9 !important;
       }
+
+      .edition-box.featured-deal {
+        border: 2px solid #F59E0B !important;
+        background: linear-gradient(180deg, rgba(245, 158, 11, 0.08) 0%, #111827 100%) !important;
+        box-shadow: 0 10px 30px rgba(245, 158, 11, 0.15) !important;
+      }
+
+      .edition-box h3 {
+        color: #FFFFFF !important;
+        font-size: 1.35rem !important;
+      }
+
+      .edition-summary {
+        color: #94A3B8 !important;
+        font-size: 0.88rem !important;
+      }
+
+      .feature-list li {
+        font-size: 0.88rem !important;
+        color: #CBD5E1 !important;
+      }
+
+      .distribution-note-box {
+        font-size: 0.8rem !important;
+        padding: 12px !important;
+      }
+
+      /* Mobile FAQs */
+      .faq-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+      }
+
+      .faq-item {
+        background: rgba(19, 26, 43, 0.9) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border-radius: 12px !important;
+        padding: 16px !important;
+      }
+
+      .faq-item h4 {
+        font-size: 0.98rem !important;
+        color: #F8FAFC !important;
+        margin-bottom: 6px !important;
+      }
+
+      .faq-item p {
+        font-size: 0.86rem !important;
+        color: #94A3B8 !important;
+        line-height: 1.5 !important;
+      }
+
       .cta-card {
-        padding: 36px 18px;
+        padding: 28px 16px !important;
+        border-radius: 18px !important;
+        background: linear-gradient(135deg, #161E31 0%, #0A0E18 100%) !important;
+        text-align: center !important;
+      }
+
+      .cta-card h2 {
+        font-size: 1.5rem !important;
+      }
+
+      .cta-card p {
+        font-size: 0.92rem !important;
+        margin-bottom: 20px !important;
+      }
+
+      .cta-btn-row {
+        flex-direction: column !important;
+        gap: 10px !important;
+      }
+
+      .cta-btn-row .btn {
+        width: 100% !important;
+      }
+
+      /* Footer on Mobile */
+      footer.site-footer {
+        background: #060911 !important;
+        border-top-color: rgba(255, 255, 255, 0.08) !important;
+        color: #64748B !important;
+        padding: 28px 16px 100px !important;
+        margin-top: 40px !important;
+      }
+
+      /* ⭐ REDESIGNED STICKY MOBILE DOCK (100% NO OVERFLOW) */
+      .mobile-dock {
+        display: flex !important;
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        background: rgba(8, 12, 21, 0.98) !important;
+        border-top: 1.5px solid rgba(245, 158, 11, 0.4) !important;
+        backdrop-filter: blur(20px) !important;
+        padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+        z-index: 99999 !important;
+        box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.7) !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 10px !important;
+        box-sizing: border-box !important;
+      }
+
+      .dock-info {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        min-width: 0 !important;
+        flex: 1 !important;
+      }
+
+      .dock-title {
+        font-size: 0.8rem !important;
+        font-weight: 800 !important;
+        color: #F8FAFC !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+
+      .dock-deal {
+        font-size: 0.74rem !important;
+        color: #F59E0B !important;
+        font-weight: 700 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+      }
+
+      .dock-btns {
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        flex-shrink: 0 !important;
+      }
+
+      .dock-btns a.btn-outline {
+        display: none !important; /* Maximizes thumb CTA target and eliminates horizontal crowding */
+      }
+
+      .dock-btns a.btn-gold {
+        padding: 10px 18px !important;
+        font-size: 0.92rem !important;
+        font-weight: 800 !important;
+        border-radius: 10px !important;
+        white-space: nowrap !important;
       }
     }
   </style>
