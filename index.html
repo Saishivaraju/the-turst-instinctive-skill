@@ -2499,7 +2499,34 @@
 
     // Live Dodo Payments Checkout (automatically redirects customer to your Thank You page upon payment)
     const DODO_CHECKOUT_URL = `https://checkout.dodopayments.com/buy/${DODO_PRODUCT_ID}?redirect_url=${REDIRECT_PARAM}`;
-    const INDIA_CHECKOUT_URL = "https://rzp.io/rzp/ZyURlHY"; // Razorpay Payment Link for ₹10
+    const DEFAULT_INDIA_CHECKOUT_URL = "https://rzp.io/rzp/ZyURlHY"; // Primary Author Checkout Link
+
+    // -------------------------------------------------------------------------
+    // 🤝 DYNAMIC AFFILIATE / PARTNER REFERRAL SYSTEM
+    // Allows partners to share: https://theturstintinctiveskill.zorvo.co.in/?ref=stoic
+    // Or direct payment link: https://theturstintinctiveskill.zorvo.co.in/?rzp=https://rzp.io/l/custom123
+    // -------------------------------------------------------------------------
+    const urlParams = new URLSearchParams(window.location.search);
+    const customRzpParam = urlParams.get('rzp');
+    const refParam = urlParams.get('ref');
+
+    // Partner Mapping Registry (Add your partners here anytime):
+    const AFFILIATE_MAP = {
+      demo: "https://rzp.io/rzp/ZyURlHY"
+    };
+
+    let activePartnerLink = null;
+    if (customRzpParam && (customRzpParam.startsWith('https://rzp.io/') || customRzpParam.startsWith('https://pages.razorpay.com/'))) {
+      activePartnerLink = customRzpParam;
+      try { sessionStorage.setItem('affiliate_rzp_link', customRzpParam); } catch(e){}
+    } else if (refParam && AFFILIATE_MAP[refParam.toLowerCase()]) {
+      activePartnerLink = AFFILIATE_MAP[refParam.toLowerCase()];
+      try { sessionStorage.setItem('affiliate_rzp_link', activePartnerLink); } catch(e){}
+    } else {
+      try { activePartnerLink = sessionStorage.getItem('affiliate_rzp_link'); } catch(e){}
+    }
+
+    const INDIA_CHECKOUT_URL = activePartnerLink || DEFAULT_INDIA_CHECKOUT_URL;
 
     const PRICING_CONFIG = {
       IN: {
