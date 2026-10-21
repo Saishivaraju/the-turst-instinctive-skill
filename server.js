@@ -125,6 +125,23 @@ app.post("/webhook/razorpay", express.json(), async (req, res) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// 2A. Instant IP Geo-Detection Endpoint (Reads Vercel / Cloudflare country headers)
+app.get("/api/geo", (req, res) => {
+  const country = (
+    req.headers["x-vercel-ip-country"] ||
+    req.headers["cf-ipcountry"] ||
+    req.headers["x-country-code"] ||
+    req.headers["cloudfront-viewer-country"] ||
+    ""
+  ).toUpperCase();
+
+  const isIndia = country === "IN";
+  return res.json({
+    country: isIndia ? "IN" : (country ? "GLOBAL" : "DETECT"),
+    countryCode: country || "UNKNOWN"
+  });
+});
+
 // 2B. Instant Deliver-To API (works via GET or POST for one-click manual deliveries/resends)
 app.all("/api/deliver-to", async (req, res) => {
   const targetEmail = req.query.email || req.body?.email;

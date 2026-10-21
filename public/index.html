@@ -2637,41 +2637,72 @@
       } catch (err) {}
     }
 
-    // Auto-detect Indian vs International visitor
+    // Auto-detect Indian vs USA/International visitor (Multi-tiered Geo Detection)
     function initRegionDetection() {
-      const saved = localStorage.getItem("preferred_region_v1");
-      if (saved && PRICING_CONFIG[saved]) {
-        applyRegionPricing(saved);
-        return;
-      }
+      // 1. If visitor manually clicked a currency button this session, respect their choice
+      try {
+        const manual = sessionStorage.getItem("manual_user_region");
+        if (manual && PRICING_CONFIG[manual]) {
+          applyRegionPricing(manual);
+          return;
+        }
+      } catch (err) {}
 
+      // 2. High-speed Browser Timezone Heuristic (Instant, 0ms latency)
       const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || "").toLowerCase();
       const isIndiaTz = tz.includes("calcutta") || tz.includes("kolkata") || tz.includes("asia/colombo") || tz.includes("india");
-      
+
+      // Set initial state immediately to avoid any flash of wrong currency
       if (isIndiaTz) {
         applyRegionPricing("IN");
       } else {
         applyRegionPricing("GLOBAL");
       }
 
-      fetch("https://ipapi.co/json/")
+      // 3. Exact IP-based Country Verification from our server (/api/geo)
+      fetch("/api/geo")
         .then(res => res.json())
         .then(data => {
-          if (data && data.country_code) {
-            const detected = data.country_code === "IN" ? "IN" : "GLOBAL";
-            if (!localStorage.getItem("preferred_region_v1")) {
-              applyRegionPricing(detected);
+          if (data && data.country && (data.country === "IN" || data.country === "GLOBAL")) {
+            try {
+              if (!sessionStorage.getItem("manual_user_region")) {
+                applyRegionPricing(data.country);
+              }
+            } catch(e) {
+              applyRegionPricing(data.country);
             }
           }
         })
-        .catch(() => {});
+        .catch(() => {
+          // 4. Secondary fallback: Country.is API
+          fetch("https://api.country.is/")
+            .then(res => res.json())
+            .then(data => {
+              if (data && data.country) {
+                const detected = data.country.toUpperCase() === "IN" ? "IN" : "GLOBAL";
+                try {
+                  if (!sessionStorage.getItem("manual_user_region")) {
+                    applyRegionPricing(detected);
+                  }
+                } catch(e) {
+                  applyRegionPricing(detected);
+                }
+              }
+            })
+            .catch(() => {});
+        });
     }
 
     // Region switcher click handler
     document.querySelectorAll(".curr-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         const country = btn.getAttribute("data-country");
-        if (country) applyRegionPricing(country);
+        if (country) {
+          try {
+            sessionStorage.setItem("manual_user_region", country);
+          } catch(e) {}
+          applyRegionPricing(country);
+        }
       });
     });
 
