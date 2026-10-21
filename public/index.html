@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Instinctive Trust Skill — By Sai Shivarajuu M (Official Bestseller Edition)</title>
+  <title>The Instinctive Trust Skill — By Sai Shivarajuu M (Official Author Edition)</title>
   <meta name="description" content="The Instinctive Trust Skill by Sai Shivarajuu M. Regular Ebook Price: ₹499. Official Direct Author Launch Pass: Get the complete 220-page Master Volume + 5 Action Workbooks for only ₹99 / $4.99 (First 100 People Only)." />
 
   <!-- Modern Bestseller Typography: Plus Jakarta Sans & Outfit -->
@@ -2061,6 +2061,197 @@
         text-align: center !important;
       }
     }
+  
+    /* ==========================================================================
+       AUTHENTIC ABOUT THE AUTHOR SECTION
+       ========================================================================== */
+    .author-section {
+      background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+      position: relative;
+    }
+
+    .author-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .author-photo-wrapper {
+      position: relative;
+      text-align: center;
+    }
+
+    .author-photo-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #090D16;
+      box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.25);
+      border: 2px solid rgba(229, 169, 60, 0.35);
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .author-img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .author-photo-card:hover .author-img {
+      transform: scale(1.03);
+    }
+
+    .author-photo-caption {
+      padding: 14px 16px;
+      background: rgba(9, 13, 22, 0.95);
+      color: #FFFFFF;
+      text-align: center;
+    }
+
+    .author-photo-caption h4 {
+      font-size: 1.05rem;
+      color: #FFFFFF;
+      margin-bottom: 2px;
+      font-weight: 700;
+    }
+
+    .author-photo-caption p {
+      font-size: 0.8rem;
+      color: var(--gold-primary);
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .author-credentials-list {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .author-cred-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      padding: 8px 14px;
+      border-radius: var(--radius-md);
+      font-size: 0.82rem;
+      color: var(--text-main);
+      font-weight: 600;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .author-cred-item span:first-child {
+      color: var(--gold-dark);
+      font-size: 1rem;
+    }
+
+    .author-narrative {
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      border-radius: 20px;
+      padding: 36px 40px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .author-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: var(--gold-light);
+      color: var(--gold-dark);
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 14px;
+    }
+
+    .author-narrative h3 {
+      font-size: 1.75rem;
+      color: var(--text-main);
+      margin-bottom: 18px;
+      line-height: 1.25;
+    }
+
+    .author-story-body p {
+      color: #334155;
+      font-size: 0.96rem;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .author-highlight-box {
+      background: #F8FAFC;
+      border-left: 4px solid var(--gold-primary);
+      padding: 14px 18px;
+      border-radius: 0 10px 10px 0;
+      margin: 18px 0;
+      font-style: italic;
+      color: #1E293B;
+      font-size: 0.94rem;
+      line-height: 1.6;
+    }
+
+    .author-signoff {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border-light);
+      padding-top: 20px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .author-signature-block {
+      line-height: 1.3;
+    }
+
+    .author-sign-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .author-sign-title {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 900px) {
+      .author-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .author-narrative {
+        padding: 24px 20px;
+      }
+      .author-photo-card {
+        max-width: 260px;
+      }
+      .author-img {
+        height: 290px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -2112,7 +2303,7 @@
         <!-- Left: Copy & Value Proposition -->
         <div class="hero-content">
           <div class="kicker-pill">
-            <span>✦</span> Official Bestseller Edition · 2026 Release
+            <span>✦</span> Direct Author Edition · 2026 Release
           </div>
 
           <h1 class="hero-title">
@@ -2339,6 +2530,92 @@
             <p>Execute the 3-minute pre-meeting visualization protocol to cement the habit for 30 days.</p>
           </div>
           <div class="wb-drill-pill">Drill: Mental Emulation</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- 👤 AUTHENTIC ABOUT THE AUTHOR SECTION -->
+  <section class="section author-section" id="about-author">
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin-bottom: 30px;">
+        <span class="section-tag">Behind The Pages</span>
+        <h2 class="section-title">Why I Wrote This Guide</h2>
+        <p class="section-desc">A message from author and behavioral researcher Sai Shivarajuu M.</p>
+      </div>
+
+      <div class="author-grid">
+        <!-- Left: Verified Author Portrait & Credentials -->
+        <div class="author-photo-wrapper">
+          <div class="author-photo-card">
+            <img 
+              src="/assets/sai_author_portrait.jpg" 
+              alt="Sai Shivarajuu M - Author of The Instinctive Trust Skill" 
+              class="author-img"
+              loading="lazy"
+            />
+            <div class="author-photo-caption">
+              <h4>Sai Shivarajuu M</h4>
+              <p>Author & Behavioral Dynamics Researcher</p>
+            </div>
+          </div>
+
+          <div class="author-credentials-list">
+            <div class="author-cred-item">
+              <span>📖</span>
+              <span>220-Page Unabridged Practical Manual</span>
+            </div>
+            <div class="author-cred-item">
+              <span>🔬</span>
+              <span>100s of Hours of Non-Verbal Research</span>
+            </div>
+            <div class="author-cred-item">
+              <span>⚡</span>
+              <span>Creator of 5-Day Somatic Action Plan</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Honest, Authentic Journey -->
+        <div class="author-narrative">
+          <div class="author-badge-pill">
+            ✦ Honest Story · Zero Fake Hype
+          </div>
+
+          <h3>"I wasn't born with effortless charisma. I had to decode it from the ground up."</h3>
+
+          <div class="author-story-body">
+            <p>
+              For years, I was that person who got spoken over in conversations. I would sit in rooms full of people with great ideas in my head, feeling a knot in my throat, second-guessing every word before I spoke. And worst of all: on the drive home, I would spend hours in an agonizing mental autopsy — <em>"Why did I say that? Did they think I sounded strange?"</em>
+            </p>
+
+            <p>
+              Most modern advice told me to "just be louder" or "fake it till you make it." But when an introvert tries to fake extroversion, everyone in the room senses the tension immediately. It doesn't earn respect; it only exhausts you.
+            </p>
+
+            <div class="author-highlight-box">
+              "Real authority isn't about shouting or dominating the room. It comes from nervous system calm, radical physical predictability, and subtle micro-signals that make people naturally listen."
+            </div>
+
+            <p>
+              So I stopped listening to surface-level motivational talk. I dedicated hundreds of hours to breaking down evolutionary threat-detection psychology, nervous system regulation, and non-verbal baselines. I mapped out the exact mechanics: why the 3-second doorway pause changes how rooms perceive you, how dropping your vocal pitch decelerates tension, and how stilling nervous fidgets anchors trust.
+            </p>
+
+            <p>
+              I field-tested every single drill on myself until I could walk into high-stakes rooms with genuine, quiet authority. <strong>The Instinctive Trust Skill</strong> and its 5 companion workbooks are the exact blueprint of that journey — written for everyday people who face the same silent struggles I did.
+            </p>
+          </div>
+
+          <div class="author-signoff">
+            <div class="author-signature-block">
+              <div class="author-sign-name">Sai Shivarajuu M</div>
+              <div class="author-sign-title">Author · The Instinctive Trust Skill</div>
+            </div>
+
+            <a href="#pricing" class="btn btn-gold btn-sm">
+              Claim Launch Edition · ₹99 ➔
+            </a>
+          </div>
         </div>
       </div>
     </div>
